@@ -1,0 +1,11 @@
+.homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Set the height of the container to the full viewport height */
+    background-color: black; /* Set the background color to black */
+    overflow: hidden; /* Ensure the GIF doesn't overflow the container */
+    background: url('moodboard.gif') center center / cover no-repeat;
+  }
+  

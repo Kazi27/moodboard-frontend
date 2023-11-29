@@ -1,9 +1,10 @@
 import React from 'react';
+import './homepage.css'; // Make sure the path is correct
 
 const Homepage = () => {
   return (
-    <div>
-      <h1>Main Page</h1>
+    <div className="homepage-container">
+      <h1> </h1>
     </div>
   );
 };
