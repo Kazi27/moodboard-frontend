@@ -5,8 +5,7 @@ const Unsplash = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
-    // Implement your logic for fetching images based on 'searchQuery'
-    console.log(`Searching for images with query: ${searchQuery}`);
+    //fetch images based on input from the api here
   };
 
   return (

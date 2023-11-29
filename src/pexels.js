@@ -5,8 +5,7 @@ const Pexels = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleSearch = () => {
-    // Implement your logic for fetching videos based on 'searchQuery'
-    console.log(`Searching for videos with query: ${searchQuery}`);
+    //fetch videos based on input from the api here
   };
 
   return (
