@@ -1,32 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './styles.css';
 
 const Unsplash = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [images, setImages] = useState([]);
+  const [searchQuery, setSearchQuery] = useState(''); //state hooks, prolly change in redux
+  const [images, setImages] = useState([]); //array of images
 
+  //when user clicks search button fetch from unspalsh
   const handleSearch = async () => {
     try {
+      //maybe put api key in .env?
       const response = await fetch(
         `https://api.unsplash.com/search/photos?page=1&query=${searchQuery}&client_id=Wp7H7sxUZlVfljqKikdpcey8Dg3b3OjE2TPv9qlGtwk`
       );
 
+      //as per usual
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
 
+      //parse
       const data = await response.json();
+
+      //update images from api
       setImages(data.results);
     } catch (error) {
-      console.error('Error fetching images:', error.message);
+      //console.error('Error fetching images:', error.message); dont log to console in final submission
     }
   };
-
-  // useEffect to handle initial load (optional)
-  useEffect(() => {
-    // You can add code here to fetch initial data when the component mounts
-    // For example, fetch popular photos or any default query
-  }, []);
 
   return (
     <div>
