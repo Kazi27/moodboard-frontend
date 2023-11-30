@@ -10,7 +10,7 @@ const Unsplash = () => {
     try {
       //maybe put api key in .env?
       const response = await fetch(
-        `https://api.unsplash.com/search/photos?page=1&query=${searchQuery}&client_id=Wp7H7sxUZlVfljqKikdpcey8Dg3b3OjE2TPv9qlGtwk`
+        `https://api.unsplash.com/search/photos?page=1&query=${searchQuery}&per_page=30&client_id=Wp7H7sxUZlVfljqKikdpcey8Dg3b3OjE2TPv9qlGtwk`
       );
 
       //as per usual
