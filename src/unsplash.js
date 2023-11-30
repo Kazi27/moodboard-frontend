@@ -41,7 +41,10 @@ const Unsplash = () => {
 
       <div className="image-container">
         {images.map((image) => (
-          <img key={image.id} src={image.urls.small} alt={image.description} />
+          <div key={image.id} className="image-item">
+            <img src={image.urls.small} alt={image.description} />
+            <p className="caption">{image.description}</p>
+          </div>
         ))}
       </div>
     </div>
