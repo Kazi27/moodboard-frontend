@@ -64,6 +64,18 @@ h2 {
   object-fit: cover; /* aspect ratio maintained */
 }
 
+/* .caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgb(142, 143, 168);
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+} */
+
 .caption {
   position: absolute;
   bottom: 0;
@@ -74,4 +86,10 @@ h2 {
   padding: 8px;
   text-align: center;
   font-size: 14px;
+  opacity: 0; /* Initially invisible */
+  transition: opacity 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.image-item:hover .caption {
+  opacity: 1; /* Caption becomes visible on hover */
 }
