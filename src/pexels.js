@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import './styles.css';
-import { createClient } from 'pexels'; // Import the createClient function from the pexels library
 
 const Pexels = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [videos, setVideos] = useState([]);
 
   const handleSearch = () => {
-    // Replace 'YOUR_API_KEY' with your actual Pexels API key
-    const client = createClient('gikstuGIujwMYIlMaNSq5JrgjML80sNffCYwN8oqS2jWSCNOpmn6I7rj');
+    const apiKey = 'gikstuGIujwMYIlMaNSq5JrgjML80sNffCYwN8oqS2jWSCNOpmn6I7rj';
+    const url = `https://api.pexels.com/videos/search?query=${searchQuery}&per_page=10`;
 
-    // Make a request to the video search endpoint
-    client.videos.search({ query: searchQuery, per_page: 10 }) // Adjust per_page as needed
-      .then(response => {
-        setVideos(response.videos);
-      })
-      .catch(error => {
-        console.error('Error fetching videos:', error.message);
-      });
+    fetch(url, {
+      headers: {
+        Authorization: apiKey, //this was the authorization the pexels api needed AS A HEADER!
+      },
+    })
+      .then(response => response.json())
+      .then(data => setVideos(data.videos))
+      //.catch(error => console.error('Error fetching videos:', error.message)); //take out in final version
   };
 
+  //for the return, the only equivalent thing to captions is the user so i return that too
   return (
     <div>
       <h1>Pexels Page (Videos)</h1>
