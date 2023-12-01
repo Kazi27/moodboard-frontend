@@ -7,19 +7,18 @@ const Pexels = () => {
 
   const handleSearch = () => {
     const apiKey = 'gikstuGIujwMYIlMaNSq5JrgjML80sNffCYwN8oqS2jWSCNOpmn6I7rj';
-    const url = `https://api.pexels.com/videos/search?query=${searchQuery}&per_page=10`;
+    const url = `https://api.pexels.com/videos/search?query=${searchQuery}&per_page=30`;
 
     fetch(url, {
       headers: {
-        Authorization: apiKey, //this was the authorization the pexels api needed AS A HEADER!
+        Authorization: apiKey,
       },
     })
       .then(response => response.json())
       .then(data => setVideos(data.videos))
-      //.catch(error => console.error('Error fetching videos:', error.message)); //take out in final version
+      .catch(error => console.error('Error fetching videos:', error.message));
   };
 
-  //for the return, the only equivalent thing to captions is the user so i return that too
   return (
     <div>
       <h1>Pexels Page (Videos)</h1>
