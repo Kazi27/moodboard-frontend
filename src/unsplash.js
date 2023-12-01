@@ -33,7 +33,7 @@ const Unsplash = () => {
       <h1>Unsplash Page (Photos)</h1>
       <input
         type="text"
-        placeholder="Search for an image"
+        placeholder="Search images"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
