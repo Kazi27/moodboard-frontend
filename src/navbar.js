@@ -5,10 +5,10 @@ import './styles.css';
 const Navbar = () => {
   return (
     <div className="navbar">
-      <Link to="/favorites">Favorites</Link>
+      <Link to="/">Homepage</Link>
       <Link to="/photos">Photos</Link>
       <Link to="/videos">Videos</Link>
-      <Link to="/">Homepage</Link>
+      <Link to="/favorites">Favorites</Link>
     </div>
   );
 };

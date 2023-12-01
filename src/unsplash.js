@@ -10,7 +10,7 @@ const Unsplash = () => {
     try {
       //maybe put api key in .env?
       const response = await fetch(
-        `https://api.unsplash.com/search/photos?page=1&query=${searchQuery}&client_id=Wp7H7sxUZlVfljqKikdpcey8Dg3b3OjE2TPv9qlGtwk`
+        `https://api.unsplash.com/search/photos?page=1&query=${searchQuery}&per_page=30&client_id=Wp7H7sxUZlVfljqKikdpcey8Dg3b3OjE2TPv9qlGtwk`
       );
 
       //as per usual
@@ -33,7 +33,7 @@ const Unsplash = () => {
       <h1>Unsplash Page (Photos)</h1>
       <input
         type="text"
-        placeholder="Search for an image"
+        placeholder="Search images"
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
