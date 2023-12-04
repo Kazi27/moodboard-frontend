@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import unsplashReducer from '../slices/UnsplashSlice';
-import pexelsReducer from '../slices/pexelsSlice';
+import unsplashReducer from './slices/UnsplashSlice';
+import pexelsReducer from './slices/pexelsSlice';
 
 const store = configureStore({
   reducer: {

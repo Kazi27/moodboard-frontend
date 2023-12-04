@@ -1,4 +1,3 @@
-// unsplashSlice.js
 import { createSlice } from '@reduxjs/toolkit';
 
 export const unsplashSlice = createSlice({

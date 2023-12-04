@@ -9,13 +9,13 @@ export const pexelsSlice = createSlice({
   },
   reducers: {
     setSearchQuery: (state, action) => {
-      state.searchQuery = action.payload;
+      return { ...state, searchQuery: action.payload };
     },
     setVideos: (state, action) => {
-      state.videos = action.payload;
+      return { ...state, videos: action.payload };
     },
     setError: (state, action) => {
-      state.error = action.payload;
+      return { ...state, error: action.payload };
     },
   },
 });
