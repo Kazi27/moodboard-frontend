@@ -1,11 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+
+// A slice is created for pexels state
 export const pexelsSlice = createSlice({
   name: 'pexels',
   initialState: {
-    searchQuery: '',
-    videos: [],
-    error: null,
+    searchQuery: '', //initial searchQuery is empty 
+    videos: [] //initialization of video data to empty
   },
   reducers: {
     setSearchQuery: (state, action) => {
@@ -13,13 +14,11 @@ export const pexelsSlice = createSlice({
     },
     setVideos: (state, action) => {
       return { ...state, videos: action.payload };
-    },
-    setError: (state, action) => {
-      return { ...state, error: action.payload };
-    },
+    }
   },
 });
 
-export const { setSearchQuery, setVideos, setError } = pexelsSlice.actions;
+// Exporting action creators and reducer
+export const { setSearchQuery, setVideos } = pexelsSlice.actions;
 
 export default pexelsSlice.reducer;
