@@ -1,25 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// create a slice for unsplash state
 export const unsplashSlice = createSlice({
   name: 'unsplash',
   initialState: {
     searchQuery: '',
-    images: [],
-    error: null,
-  },
+    images: []
+    },
   reducers: {
+    // function to update search query
     setSearchQuery(state, action) {
       state.searchQuery = action.payload;
     },
+    // function to update image data
     setImages(state, action) {
       state.images = action.payload;
-    },
-    setError(state, action) {
-      state.error = action.payload;
-    },
+    }
   },
 });
 
-export const { setSearchQuery, setImages, setError } = unsplashSlice.actions;
+// exports action and reducer function
+export const { setSearchQuery, setImages } = unsplashSlice.actions;
 
 export default unsplashSlice.reducer;
