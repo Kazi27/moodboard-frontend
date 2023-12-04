@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
 const Favorites = () => {
-  // State to hold the fetched favorite images
+  // State to hold the fetched favorite images and their captions
   const [favorites, setFavorites] = useState([]);
 
-  // Function to fetch favorite images from the backend
+  // Function to fetch favorite images and their captions from the backend
   const fetchFavorites = async () => {
     try {
-      const response = await fetch('http://localhost:3000/api/favorites');
+      const response = await fetch('http://localhost:3000/api/favorites-with-captions');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -29,9 +29,9 @@ const Favorites = () => {
       <h2>Store images that are favorited here</h2>
       <div>
         {favorites.map(favorite => (
-          <div key={favorite.photo_id}>
-            <img src={favorite.photo_url} alt={`Favorite ${favorite.photo_id}`} />
-            {/* Additional favorite data can be displayed here */}
+          <div key={favorite.photo_id} style={{ marginBottom: '20px' }}>
+            <img src={favorite.photo_url} alt={`Favorite ${favorite.photo_id}`} style={{ width: '100px', height: '100px' }} />
+            <p>{favorite.caption?.caption_text}</p> {/* Display the associated caption text */}
           </div>
         ))}
       </div>
