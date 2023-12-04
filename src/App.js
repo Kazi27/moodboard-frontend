@@ -3,7 +3,8 @@ import React from 'react';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import unsplashReducer from './store/slices/unsplashSlice'; // Import the unsplash reducer
+import unsplashReducer from './store/slices/unsplashSlice'; // Import  unsplash reducer
+import pexelsReducer from './store/slices/pexelsSlice'; // Import pexels reducer
 import Homepage from './homepage';
 import Unsplash from './unsplash';
 import Pexels from './pexels';
@@ -13,6 +14,7 @@ import Navbar from './navbar';
 const store = configureStore({
   reducer: {
     unsplash: unsplashReducer,
+    pexels: pexelsReducer
   },
 });
 

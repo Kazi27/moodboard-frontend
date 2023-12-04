@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import './styles.css';
+import React from 'react';
+import { setSearchQuery, setVideos, setError } from './store/slices/pexelsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 const Pexels = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [videos, setVideos] = useState([]);
+  const searchQuery = useSelector((state) => state.pexels.searchQuery);
+  const videos = useSelector((state) => state.pexels.videos);
+  const dispatch = useDispatch();
 
   const handleSearch = () => {
-    const apiKey = 'gikstuGIujwMYIlMaNSq5JrgjML80sNffCYwN8oqS2jWSCNOpmn6I7rj';
+    const apiKey = 'gikstuGIujwMYIlMaNSq5JrgjML80sNffCYwN8oqS2jWSCNOpmn6I7rj'; 
     const url = `https://api.pexels.com/videos/search?query=${searchQuery}&per_page=30`;
 
     fetch(url, {
@@ -14,9 +17,23 @@ const Pexels = () => {
         Authorization: apiKey,
       },
     })
-      .then(response => response.json())
-      .then(data => setVideos(data.videos))
-      .catch(error => console.error('Error fetching videos:', error.message));
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        dispatch(setVideos(data.videos));
+        dispatch(setError(null));
+      })
+      .catch(error => {
+        dispatch(setError(error.message));
+      });
+  };
+
+  const handleInputChange = (e) => {
+    dispatch(setSearchQuery(e.target.value));
   };
 
   return (
@@ -26,7 +43,7 @@ const Pexels = () => {
         type="text"
         placeholder="Search for a video"
         value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
+        onChange={handleInputChange}
       />
       <button onClick={handleSearch}>Search</button>
 
