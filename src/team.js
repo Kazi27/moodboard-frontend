@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import './styles.css';
 import kazi from './kazi.png'
 import george from './george.png'

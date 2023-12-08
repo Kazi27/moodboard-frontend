@@ -33,6 +33,7 @@ function App() {
           <Route path="/photos" element={<Unsplash />} />
           <Route path="/videos" element={<Pexels />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/:team" element={<Team />} />
         </Routes>
         <Team />
       </Router>
