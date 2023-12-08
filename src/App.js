@@ -12,6 +12,7 @@ import Unsplash from './unsplash';
 import Pexels from './pexels';
 import Favorites from './favorites';
 import Navbar from './navbar';
+import Team from './team'
 
 
 // configure Redux store for pexels and unsplash reducers
@@ -33,6 +34,7 @@ function App() {
           <Route path="/videos" element={<Pexels />} />
           <Route path="/favorites" element={<Favorites />} />
         </Routes>
+        <Team />
       </Router>
     </Provider>
   );
