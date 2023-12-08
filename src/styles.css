@@ -136,3 +136,38 @@ h1, h2 {
 .video-item:hover p {
   display: block; /* Show the user name on hover */
 }
+
+.team {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #000000;
+  color:#6ea3dc;
+  padding: 20px;
+  margin-top: 0px; /* Adjust the margin as needed */
+}
+
+.team-member {
+  text-align: center;
+}
+
+.team-member img {
+  width: 100px; /* Adjust the width as needed */
+  height: 100px; /* Adjust the height as needed */
+  border-radius: 50%; /* Make it circular */
+  margin-bottom: 10px;
+}
+
+.team-member h3 {
+  margin: 5px 0;
+}
+
+.team-member a {
+  color: #db5757;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.team-member a:hover {
+  color: #007bff; /* Change color on hover */
+}
