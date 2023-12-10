@@ -9,6 +9,7 @@ const Navbar = () => {
       <Link to="/photos">Photos</Link>
       <Link to="/videos">Videos</Link>
       <Link to="/favorites">Favorites</Link>
+      <Link to="/edit-favorites">Edit Favorites</Link>
     </div>
   );
 };
