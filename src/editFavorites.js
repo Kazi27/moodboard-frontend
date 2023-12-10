@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import editIcon from './public/icons/edit.svg';
 import deleteIcon from './public/icons/delete.svg';
+import Modal from "./modal";
 
 const Card = ({ favorite, onEdit, onDelete }) => {
 
@@ -21,7 +22,12 @@ const Card = ({ favorite, onEdit, onDelete }) => {
 
 const EditFavorities = () => {
     const [favorites, setFavorites] = useState([]);
-  
+    
+    const [showModal, setShowModal] = useState(false);
+    const [editingFavorite, setEditingFavorite] = useState(null);
+    const [editedPhotoUrl, setEditedPhotoUrl] = useState('');
+    const [editedCaptionText, setEditedCaptionText] = useState('');
+
     // Function to fetch favorite images and their captions from the backend
     const fetchFavorites = async () => {
         try {
@@ -41,84 +47,81 @@ const EditFavorities = () => {
     }, []); // The empty array ensures this effect runs once on mount
 
 
-    const handleEdit = async (favorite) => {
-        // Prompt for new photo URL
-        const newPhotoUrl = prompt('Enter the new photo URL:', favorite.photo_url);
-      
-        // Check and update photo URL if different
-        if (newPhotoUrl && newPhotoUrl !== favorite.photo_url) {
+    const handleEditClick = (favorite) => {
+        setEditingFavorite(favorite);
+        setEditedPhotoUrl(favorite.photo_url);
+        setEditedCaptionText(favorite.caption?.caption_text || '');
+        setShowModal(true);
+        
+      };
+    
+      const handleModalClose = () => {
+        setShowModal(false);
+        setEditingFavorite(null);
+      };
+
+      const handleEdit = async () => {
+        if (!editingFavorite) {
+            console.log("No editing favorite selected");
+            return;
+        }
+
+        // Update the favorite photo URL if it has been changed
+        if (editedPhotoUrl !== editingFavorite.photo_url) {
           try {
-            const photoResponse = await fetch(`http://localhost:3000/api/favorites/${favorite.photo_id}`, {
+            const photoResponse = await fetch(`http://localhost:3000/api/favorites/${editingFavorite.photo_id}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify({ photo_url: newPhotoUrl }),
+              body: JSON.stringify({ photo_url: editedPhotoUrl }),
             });
       
             if (!photoResponse.ok) {
               throw new Error(`HTTP error! status: ${photoResponse.status}`);
             }
-      
-            // Update photo_url in the local state
-            setFavorites(favorites.map(fav => {
-              if (fav.photo_id === favorite.photo_id) {
-                return { ...fav, photo_url: newPhotoUrl };
-              }
-              return fav;
-            }));
-      
           } catch (error) {
             console.error('Error updating photo URL:', error);
+            return; // Exit the function if there's an error
           }
         }
       
-        // Check if the favorite has a caption and the caption has an ID
-        if (favorite.caption && typeof favorite.caption_id !== 'undefined') {
-          const newCaptionText = prompt('Enter the new caption text:', favorite.caption.caption_text);
+        // Update the photo caption text if it has been changed and a caption exists
+        if (editingFavorite.caption && editedCaptionText !== editingFavorite.caption.caption_text) {
+          try {
+            const captionResponse = await fetch(`http://localhost:3000/api/captions/${editingFavorite.caption_id}`, {
+              method: 'PUT',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ caption_text: editedCaptionText }),
+            });
       
-          if (newCaptionText !== null && newCaptionText !== favorite.caption.caption_text) {
-            try {
-      
-              const captionResponse = await fetch(`http://localhost:3000/api/captions/${favorite.caption_id}`, {
-                method: 'PUT',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ caption_text: newCaptionText }),
-              });
-      
-              if (!captionResponse.ok) {
-                throw new Error(`HTTP error! status: ${captionResponse.status}`);
-              }
-      
-              // Update caption_text in the local state
-              setFavorites(favorites.map(fav => {
-                if (fav.photo_id === favorite.photo_id) {
-                  return {
-                    ...fav,
-                    caption: {
-                      ...fav.caption,
-                      caption_text: newCaptionText,
-                    },
-                  };
-                }
-                return fav;
-              }));
-      
-            } catch (error) {
-              console.error('Error updating caption:', error);
+            if (!captionResponse.ok) {
+              throw new Error(`HTTP error! status: ${captionResponse.status}`);
             }
+          } catch (error) {
+            console.error('Error updating caption:', error);
+            return; // Exit the function if there's an error
           }
-        } else {
-          console.error('Caption or caption ID is undefined. Favorite object:', favorite);
         }
+      
+        // Update the local state to reflect the changes
+        setFavorites(favorites.map(fav => {
+          if (fav.photo_id === editingFavorite.photo_id) {
+            return {
+              ...fav,
+              photo_url: editedPhotoUrl,
+              caption: fav.caption ? { ...fav.caption, caption_text: editedCaptionText } : null,
+            };
+          }
+          return fav;
+        }));
+      
+        handleModalClose(); // Close the modal after successful edit
       };
       
       
-      
-      
-
       const handleDelete = async (photoId) => {
         if (window.confirm('Are you sure you want to delete this favorite?')) {
           try {
@@ -141,21 +144,32 @@ const EditFavorities = () => {
     return (
 
         // better name for the file should be ModifyFavorites: both DELETE and PUT requests will be done here
-        <div>
-            <div className="grid">
-                {favorites.map(favorite => (
-                    
-                    <Card 
-                        key={favorite.photo_id} 
-                        favorite={favorite} 
-                        onEdit={handleEdit}
-                        onDelete={handleDelete}
-                        
-                    />
-                    
-                ))}
-            </div>
-        </div>
+        <div className="grid">
+            {favorites.map(favorite => (
+            <Card 
+                key={favorite.photo_id} 
+                favorite={favorite} 
+                onEdit={() => handleEditClick(favorite)}
+                onDelete={handleDelete}
+            />
+            ))}
+            <Modal show={showModal} onClose={handleModalClose}>
+                <h2>Edit Favorite</h2>
+                <input 
+                    type="text" 
+                    value={editedPhotoUrl} 
+                    onChange={(e) => setEditedPhotoUrl(e.target.value)} 
+                    placeholder="Photo URL" 
+                />
+                <input 
+                    type="text" 
+                    value={editedCaptionText} 
+                    onChange={(e) => setEditedCaptionText(e.target.value)} 
+                    placeholder="Caption Text" 
+                />
+                <button className="modal-button modal-button-primary" onClick={handleEdit}>Submit Changes</button>
+            </Modal>
+      </div>
     );
 };
 
