@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const Favorites = () => {
   // State to hold the fetched favorite images and their captions
   const [favorites, setFavorites] = useState([]);
-
+  
   // Function to fetch favorite images and their captions from the backend
   const fetchFavorites = async () => {
     try {

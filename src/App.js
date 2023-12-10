@@ -9,6 +9,7 @@ import Unsplash from './unsplash';
 import Pexels from './pexels';
 import Favorites from './favorites';
 import Navbar from './navbar';
+import EditFavorities from './editFavorites';
 
 const store = configureStore({
   reducer: {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/photos" element={<Unsplash />} />
           <Route path="/videos" element={<Pexels />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/edit-favorites" element={<EditFavorities/>}/>
         </Routes>
       </Router>
     </Provider>
