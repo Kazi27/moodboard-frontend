@@ -136,3 +136,52 @@ h1, h2 {
 .video-item:hover p {
   display: block; /* Show the user name on hover */
 }
+
+/* CSS for Card Component */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  position: relative;
+  min-height: 300px;
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: center;
+}
+.card-icons {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  /* other styles */
+}
+
+.icon {
+  width: 24px; /* or the size you want */
+  height: 24px; /* or the size you want */
+  margin-left: 10px; /* give some space between icons */
+  cursor: pointer;
+}
+
+.edit-icon {
+  /* additional styling specific to edit icon if necessary */
+}
+
+.delete-icon {
+  /* additional styling specific to delete icon if necessary */
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  padding: 17px;
+  box-sizing: border-box;
+}
+.card-caption {
+  /* styling for caption text */
+}
+
+
