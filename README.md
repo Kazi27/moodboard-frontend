@@ -12,11 +12,10 @@ This project aims to provide users with a seamless experience in searching for, 
   - **Create a topbar or sidebar component that is present throughout the app** - A navbar is present throughout the website allowing users to traverse through the pages easily
   - **Create 3 or more additional components** - Each page has at least 3 additional components (an input field for search queries, a button for triggering searches, and a container for displaying results (images for Unsplash and videos for Pexels) with other components across the favorites and homepage.
   - **1 or more components should take text-based user input** - Our photos and videos pages leverage the Unsplash and Pexels API to fetch results based on text-based user input
-  - **1 or more components should display data representing a single instance from a model** - [is this like the individual instances of photos and videos from each API?]
-    - **Clicking on one of these components should show additional information related to that instance** - [@GEORGE is this req done cause when we click on image we can see caption info?]
-  - **1 or more components should display data based on store state** - [@david does both the Unsplash and Pexels pages fulfill this requirement through their image/video cards? Cause don't these cards display data directly accessed from the Redux store state, which is updated based on user searches and API responses?]
-  - **Components should enable to user to perform CRUD operations on the backend models** - [@george's input needed like how/where/what]
-
+  - **1 or more components should display data representing a single instance from a model** - Our editFavorites page loads data from the backend as well as our favorites page
+    - **Clicking on one of these components should show additional information related to that instance** - Our captions (additional information) display when we navigate to the (instance) favorites page
+  - **1 or more components should display data based on store state** - The Unsplash and Pexels pages fulfill this requirement through their image/video cards as these cards display data directly accessed from the Redux store state, which is updated based on user searches and API responses
+  - **Components should enable to user to perform CRUD operations on the backend models** - Components on the Unsplash page allow the user to add a new favorite photo with a caption when with a click on the heart icon, typing a caption then clicking submit (create), we are reading data from our database when we navigate to our favorites page (read), we are updating either photo_url and/or caption_text when we navigate to edit favorites page and click on the pencil icon to modify an existing favorite photo (update), we are deleting when we navigate to the edit favorites page and click on the trash icon on a particular favorite photo (delete)
 - Client-Side Routing (React Router)
   - **Create 2 or more routes that display different components based on the URL, that are accessible from the navbar/topbar** - There are more than 2 routes that exist and are fully integrated into our navbar and the App.js file uses React Router to define these routes for different components based on the URL
   - **Use dynamic segments to display appropriate info based on the segment info** - [rahat's domain]
@@ -29,7 +28,7 @@ This project aims to provide users with a seamless experience in searching for, 
   - **Reflect updates to the state in the frontend UI** - The components re-render based on state changes, reflecting the updated search query and images/videos in the UI
 
 - API Calls (External and to the Backend)
-  - **Backend: Using the backend routes, should be able to perform CRUD operations on database models** - [@george needa explain his masterclass]
+  - **Backend: Using the backend routes, should be able to perform CRUD operations on database models** - Using the backend routes, the user to add a new favorite photo with a caption when with a click on the heart icon, typing a caption then clicking submit (create), we are reading data from our database when we navigate to our favorites page (read), we are updating either photo_url and/or caption_text when we navigate to edit favorites page and click on the pencil icon to modify an existing favorite photo (update), we are deleting when we navigate to the edit favorites page and click on the trash icon on a particular favorite photo (delete)
   - **External: Should make 2 or more External API calls** - We make external API calls to the Unsplash and Pexels API to obtain the images/videos
 
 ## APIs Used
