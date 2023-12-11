@@ -167,7 +167,8 @@ const EditFavorities = () => {
                     onChange={(e) => setEditedCaptionText(e.target.value)} 
                     placeholder="Caption Text" 
                 />
-                <button className="modal-button modal-button-primary" onClick={handleEdit}>Submit Changes</button>
+                <div className="modal-button-container"><button className="modal-button modal-button-primary" onClick={handleEdit}>Submit Changes</button></div>
+                
             </Modal>
       </div>
     );
