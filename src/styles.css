@@ -33,7 +33,14 @@ input {
   width: 50%; /* Adjust width as necessary */
   font-family: 'Roboto', sans-serif; /* Modern font */
 }
-
+/* Style for individual buttons */
+.modal-button {
+  padding: 10px 20px; /* Padding inside the buttons */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold; /* Makes text inside buttons bold */
+}
 button {
   padding: 10px;
   font-size: 16px;
@@ -96,6 +103,40 @@ h1, h2 {
 .image-item:hover .caption {
   display: block; /* Show the caption on hover */
 }
+
+/* styling heart icon */
+.image-item {
+  position: relative;
+  /* ... other styles ... */
+}
+
+.heart-icon {
+  position: absolute;
+  top: 8px; /* Adjust as needed */
+  right: 8px; /* Adjust as needed */
+  width: 30px; /* Adjust width for a smaller heart icon */
+  height: 30px; /* Adjust height for a smaller heart icon */
+  cursor: pointer;
+  /* ... other styles, like width or height if needed ... */
+}
+
+.image-container .image-item img.unsplash-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.image-container .image-item img.heart-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  /* Reset any specific styles if needed, e.g., object-fit, if it's not applicable */
+  object-fit: contain; /* or 'initial' */
+}
+
 
 /* Add this CSS to your existing styles.css */
 
@@ -222,14 +263,7 @@ h1, h2 {
   gap: 10px; /* This adds space between buttons */
   margin-top: 15px; /* Add some space above the button container */
 }
-/* Style for individual buttons */
-.modal-button {
-  padding: 10px 20px; /* Padding inside the buttons */
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold; /* Makes text inside buttons bold */
-}
+
 
 /* Primary action button styles */
 .modal-button-primary {
