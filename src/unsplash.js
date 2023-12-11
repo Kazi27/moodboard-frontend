@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSearchQuery, setImages } from './store/slices/unsplashSlice';
 import Modal from './modal';
 import hearticon from './public/icons/hearticon.svg';
+import greyHeartIcon from './public/icons/greyHeartIcon.svg';
 
 const Unsplash = () => {
   // Selectors to get data from the Redux store
@@ -11,7 +12,21 @@ const Unsplash = () => {
   const dispatch = useDispatch();
   
 
-  
+  const checkFavorites = async (unsplashImages) => {
+    const response = await fetch('http://localhost:3000/api/check-favorites', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ urls: unsplashImages.map(img => img.urls.small) }),
+    });
+
+    const favoritedUrls = await response.json();
+    return unsplashImages.map(img => ({
+        ...img,
+        isFavorited: favoritedUrls.includes(img.urls.small),
+    }));
+};
 
   // Function which handles image retrieval based on search
   const handleSearch = async () => {
@@ -19,15 +34,17 @@ const Unsplash = () => {
       `https://api.unsplash.com/search/photos?page=1&query=${searchQuery}&per_page=30&client_id=Wp7H7sxUZlVfljqKikdpcey8Dg3b3OjE2TPv9qlGtwk`
     );
     const data = await response.json();
-
+    const imagesWithFavorites = await checkFavorites(data.results);
     // Action which updates Redux state with fetched images
-    dispatch(setImages(data.results));
+    dispatch(setImages(imagesWithFavorites));
   };
 
   // Function to handle input change and update the search query.
   const handleInputChange = (e) => {
     dispatch(setSearchQuery(e.target.value));
   };
+
+  
 
   const [showModal, setShowModal] = useState(false);
   const [caption, setCaption] = useState('');
@@ -95,7 +112,12 @@ const Unsplash = () => {
           <div key={image.id} className="image-item">
             {/* Display each image */}
             <img src={image.urls.small} alt={image.description} />
-            <img src={hearticon} alt="Favorite" className='heart-icon' onClick={() => handleHeartClick(image)} />
+            <img 
+              src={image.isFavorited ? hearticon : greyHeartIcon} 
+              alt="Favorite" 
+              className='heart-icon' 
+              onClick={() => handleHeartClick(image)} 
+            />
             {/* Display the image description */}
             <p className="caption">{image.description}</p>
           </div>
