@@ -43,6 +43,38 @@ const Unsplash = () => {
     setCaption('');
   };
 
+  const handleSubmit = async () => {
+    if (!selectedImage || !caption) return;
+  
+    // Combine the data for the favorite photo and the caption
+    const favoriteAndCaptionData = {
+        photo_url: selectedImage.urls.small,
+        caption_text: caption, // Send the caption text along with the favorite data
+    };
+  
+    try {
+      // Make a single POST request to create both the favorite and the caption
+      const response = await fetch('http://localhost:3000/api/favorites', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(favoriteAndCaptionData),
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+  
+      console.log('Favorite and caption created successfully');
+  
+      // Close the modal and reset state
+      handleModalClose();
+    } catch (error) {
+      console.error('Error submitting new favorite and caption:', error);
+    }
+};
+
   
   return (
     <div>
