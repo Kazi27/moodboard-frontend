@@ -255,27 +255,32 @@ h1, h2 {
 
 
 
-.team {
+
+.homepage-container {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  background-color: #000000;
-  color:#6ea3dc;
-  padding: 20px;
-  margin-top: 0px; /* Adjust the margin as needed */
+  background-color: black; /* This will be covered by the background image */
+  background: url('moodboard.gif') center center / cover no-repeat;
+  /* Removed min-height to allow natural content flow */
 }
+
+
+
+
+
+
 
 .team {
   width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #6ea3dc;
   padding: 20px;
-  margin-top: 20px; /* Add margin to separate it from the content above */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: for better visibility */
+  color: #6ea3dc;
+  margin-top: auto;
 }
-
 
 .team-member {
   text-align: center;

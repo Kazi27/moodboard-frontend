@@ -5,10 +5,9 @@ import Team from './team'; // Import the Team component
 const Homepage = () => {
   return (
     <div className="homepage-container">
-      <h1>Welcome to Our Moodboard</h1>
-      <Team /> {/* Include the Team component here */}
+      {/* Other content of the homepage */}
+      <Team /> {/* This will now be at the bottom */}
     </div>
   );
 };
-
 export default Homepage;
