@@ -43,6 +43,10 @@ This project aims to provide users with a seamless experience in searching for, 
 - **Extra Documentation:** [pexels documentation](https://www.pexels.com/api/documentation/?language=javascript)
 - **Description:** The Pexels API enables programmatic access to the full Pexels content library and we utilize this API to obtain copyright-free videos based on user queries.
 
+### Trying out the website
+- **Database Connection:** Ensure that the credentials (username, password, database name) in your Sequelize connection (db.js) match those used when setting up your PostgreSQL database. The username 'georgesucuzhanay' and password 'test1' should be replaced with the actual credentials.
+- **Database Initialization:** The SQL commands in the db.sql file are used to create the database and tables. Make sure to execute these commands in PostgreSQL to set up your database before running your application.
+
 ### With the front complete, we integrated it into our back end.
 #### Back End Repository: https://github.com/George-Sucuzhanay/moodboard-backend.git
 #### Front End Repository: https://github.com/Kazi27/moodboard-frontend.git
