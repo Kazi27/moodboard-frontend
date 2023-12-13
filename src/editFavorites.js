@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import editIcon from './public/icons/edit.svg';
 import deleteIcon from './public/icons/delete.svg';
 import Modal from "./modal";
-
+import './editFavorites.css'; 
 const Card = ({ favorite, onEdit, onDelete }) => {
 
     return (

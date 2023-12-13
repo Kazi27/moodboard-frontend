@@ -1,0 +1,34 @@
+
+.favorites-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 20px; 
+}
+.favorites-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.favorites-item img {
+  width: 400px;
+  height: 400px;
+  transition: transform 0.5s ease-out;
+  cursor: pointer;
+}
+
+.favorites-item p {
+  max-width: 400px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
+
+.favorites-item:hover img {
+  transform: scale(1.05); 
+}
