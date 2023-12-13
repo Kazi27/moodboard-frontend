@@ -12,6 +12,15 @@ const Unsplash = () => {
   const dispatch = useDispatch();
   
 
+  const isBackendAvailable = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/api/health-check'); // Assuming you have a simple health-check endpoint
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  };
+  
   const checkFavorites = async (unsplashImages) => {
     const response = await fetch('http://localhost:3000/api/check-favorites', {
         method: 'POST',
@@ -34,10 +43,27 @@ const Unsplash = () => {
       `https://api.unsplash.com/search/photos?page=1&query=${searchQuery}&per_page=30&client_id=Wp7H7sxUZlVfljqKikdpcey8Dg3b3OjE2TPv9qlGtwk`
     );
     const data = await response.json();
-    const imagesWithFavorites = await checkFavorites(data.results);
-    // Action which updates Redux state with fetched images
-    dispatch(setImages(imagesWithFavorites));
+  
+    let imagesToDisplay = data.results;
+  
+    try {
+      const backendAvailable = await isBackendAvailable();
+      if (backendAvailable) {
+        imagesToDisplay = await checkFavorites(data.results);
+      } else {
+        throw new Error('Backend not available');
+      }
+    } catch (error) {
+      console.error('Error checking favorites:', error);
+      imagesToDisplay = imagesToDisplay.map(img => ({
+        ...img,
+        isFavorited: false // Default to false if backend is not available or any error occurs
+      }));
+    }
+  
+    dispatch(setImages(imagesToDisplay));
   };
+  
 
   // Function to handle input change and update the search query.
   const handleInputChange = (e) => {
