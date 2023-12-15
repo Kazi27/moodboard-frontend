@@ -1,6 +1,7 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import './styles.css';
+import { Link } from 'react-router-dom';
+
+// Assuming you have imported the team members' images
 import kazi from './kazi.png'
 import george from './george.png'
 import david from './david.png'
@@ -18,8 +19,11 @@ const Team = () => {
     <div className="team">
       {teamMembers.map((member, index) => (
         <div key={index} className="team-member">
-          <img src={member.image} alt={member.name} />
-          <h3>{member.name}</h3>
+          {/* Create a Link for each team member */}
+          <Link to={`/team/${member.name.split(" ").join("")}`}>
+            <img src={member.image} alt={member.name} />
+            <h3>{member.name}</h3>
+          </Link>
           <a href={member.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
       ))}
