@@ -1,15 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-// Helper function to normalize names for URL matching
 const normalizeString = (str) => {
   return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\W_]+/g,"").toLowerCase();
 };
 
+
 const TeamMemberDetail = ({ teamMembers }) => {
   const { memberName } = useParams();
   
-  // Find the team member whose normalized name matches the normalized URL parameter
   const member = teamMembers.find(m => 
     normalizeString(m.name) === normalizeString(memberName)
   );

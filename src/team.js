@@ -1,11 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// Assuming you have imported the team members' images
-import kazi from './kazi.png'
-import george from './george.png'
-import david from './david.png'
-import rahat from './rahat.png'
+// Import team members' images
+import kazi from './kazi.png';
+import george from './george.png';
+import david from './david.png';
+import rahat from './rahat.png';
+
+// Helper function to normalize names for URL matching
+const normalizeString = (str) => {
+  return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[\W_]+/g,"").toLowerCase();
+};
 
 const Team = () => {
   const teamMembers = [
@@ -19,8 +24,7 @@ const Team = () => {
     <div className="team">
       {teamMembers.map((member, index) => (
         <div key={index} className="team-member">
-          {/* Create a Link for each team member */}
-          <Link to={`/team/${member.name.split(" ").join("")}`}>
+          <Link to={`/team/${normalizeString(member.name)}`}>
             <img src={member.image} alt={member.name} />
             <h3>{member.name}</h3>
           </Link>
