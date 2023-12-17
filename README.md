@@ -18,8 +18,8 @@ This project aims to provide users with a seamless experience in searching for, 
   - **Components should enable to user to perform CRUD operations on the backend models** - Components on the Unsplash page allow the user to add a new favorite photo with a caption when with a click on the heart icon, typing a caption then clicking submit (create), we are reading data from our database when we navigate to our favorites page (read), we are updating either photo_url and/or caption_text when we navigate to edit favorites page and click on the pencil icon to modify an existing favorite photo (update), we are deleting when we navigate to the edit favorites page and click on the trash icon on a particular favorite photo (delete)
 - Client-Side Routing (React Router)
   - **Create 2 or more routes that display different components based on the URL, that are accessible from the navbar/topbar** - There are more than 2 routes that exist and are fully integrated into our navbar and the App.js file uses React Router to define these routes for different components based on the URL
-  - **Use dynamic segments to display appropriate info based on the segment info** - [rahat's domain]
-    - **Ex: Appropriate task is displayed when the URL matches `/tasks/:taskId`** - [based on georges answer, I guess we have to have /team/1 to /team/4? not sure]
+  - **Use dynamic segments to display appropriate info based on the segment info** - We have a team segment that shows a picture of us, our name, and our LinkedIn on the homepage as a dynamic segment with an added hover effect that changes text color
+    - **Ex: Appropriate task is displayed when the URL matches `/tasks/:taskId`** - Once our names are clicked, the URL changes to be that specific `/team/:memberName` and when our linkedIn is clicked, our specific linkedIn profiles show up
 
 - State Management (Redux)
   - **Create a store and a reducer to handle incoming actions** - We have a Redux store with separate slices for Unsplash and Pexels, each with its own reducer to handle state updates based on actions
@@ -44,6 +44,7 @@ This project aims to provide users with a seamless experience in searching for, 
 - **Description:** The Pexels API enables programmatic access to the full Pexels content library and we utilize this API to obtain copyright-free videos based on user queries.
 
 ### Trying out the website
+- **Setup:** Clone the repository, install redux/node if needed, do npm start. To use the favorites feature follow the next two steps.
 - **Database Connection:** Ensure that the credentials (username, password, database name) in your Sequelize connection (db.js) match those used when setting up your PostgreSQL database. The username 'georgesucuzhanay' and password 'test1' should be replaced with the actual credentials.
 - **Database Initialization:** The SQL commands in the db.sql file are used to create the database and tables. Make sure to execute these commands in PostgreSQL to set up your database before running your application.
 
