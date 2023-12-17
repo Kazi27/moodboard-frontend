@@ -21,22 +21,22 @@ import rahat from './rahat.png';
 const teamMembers = [
   {
     name: 'George Sucuzhañay',
-    image: george, // Use the imported image
+    image: george,
     linkedin: 'https://www.linkedin.com/in/georgesucuzhanay/'
   },
   {
     name: 'Kazi Anwar',
-    image: kazi, // Use the imported image
+    image: kazi,
     linkedin: 'https://www.linkedin.com/in/kazi/'
   },
   {
     name: 'Rahat Khandokar',
-    image: rahat, // Use the imported image
+    image: rahat,
     linkedin: 'https://www.linkedin.com/in/rahatkhandokar/'
   },
   {
     name: 'David Abushlaih',
-    image: david, // Correct this to use the imported image
+    image: david,
     linkedin:'https://www.linkedin.com/in/david-abushlaih/'
   },
 ];
