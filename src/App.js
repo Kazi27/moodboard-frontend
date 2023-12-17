@@ -1,25 +1,51 @@
-// App.js
 import React from 'react';
-import { configureStore } from '@reduxjs/toolkit';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import the unsplash and pexels reducers
-import unsplashReducer from './store/slices/unsplashSlice'; 
-import pexelsReducer from './store/slices/pexelsSlice';
+import { configureStore } from '@reduxjs/toolkit';
 
+// Import reducers and other components
+import unsplashReducer from './store/slices/unsplashSlice';
+import pexelsReducer from './store/slices/pexelsSlice';
+import Team from './team';
+import TeamMemberDetail from './TeamMemberDetail';
 import Homepage from './homepage';
 import Unsplash from './unsplash';
 import Pexels from './pexels';
 import Favorites from './favorites';
 import Navbar from './navbar';
-import EditFavorities from './editFavorites';
+import EditFavorites from './editFavorites';
+import kazi from './kazi.png';
+import george from './george.png';
+import david from './david.png';
+import rahat from './rahat.png';
+const teamMembers = [
+  {
+    name: 'George Sucuzhañay',
+    image: george,
+    linkedin: 'https://www.linkedin.com/in/georgesucuzhanay/'
+  },
+  {
+    name: 'Kazi Anwar',
+    image: kazi,
+    linkedin: 'https://www.linkedin.com/in/kazi/'
+  },
+  {
+    name: 'Rahat Khandokar',
+    image: rahat,
+    linkedin: 'https://www.linkedin.com/in/rahatkhandokar/'
+  },
+  {
+    name: 'David Abushlaih',
+    image: david,
+    linkedin:'https://www.linkedin.com/in/david-abushlaih/'
+  },
+];
 
-
-// configure Redux store for pexels and unsplash reducers
+// Configure Redux store
 const store = configureStore({
   reducer: {
     unsplash: unsplashReducer,
-    pexels: pexelsReducer
+    pexels: pexelsReducer,
   },
 });
 
@@ -33,7 +59,9 @@ function App() {
           <Route path="/photos" element={<Unsplash />} />
           <Route path="/videos" element={<Pexels />} />
           <Route path="/favorites" element={<Favorites />} />
-          <Route path="/edit-favorites" element={<EditFavorities/>}/>
+          <Route path="/edit-favorites" element={<EditFavorites />} />
+          <Route path="/team" element={<Team teamMembers={teamMembers} />} />
+          <Route path="/team/:memberName" element={<TeamMemberDetail teamMembers={teamMembers} />} />
         </Routes>
       </Router>
     </Provider>
