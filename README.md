@@ -9,17 +9,12 @@ This project aims to provide users with a seamless experience in searching for, 
 
 ### Front End Requirements
 - UI (React)
-  - **Create a topbar or sidebar component that is present throughout the app** - A navbar is present throughout the website allowing users to traverse through the pages easily
-    ##[TopBar Component](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/navbar.js#L1-L17)
+  - **Create a topbar or sidebar component that is present throughout the app** - A navbar is present throughout the website allowing users to traverse through the pages easily [TopBar Component](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/navbar.js#L1-L17)
     
-  - **Create 3 or more additional components** - Each page has at least 3 additional components (an input field for search queries, a button for triggering searches, and a container for displaying results (images for Unsplash and videos for Pexels) with other components across the favorites and homepage.
-    *[Pexels 3 Components](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/pexels.js#L42-L68)
-    *[Unsplash 3 Components](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/unsplash.js#L122-L168)
+  - **Create 3 or more additional components** - Each page has at least 3 additional components (an input field for search queries, a button for triggering searches, and a container for displaying results (images for Unsplash and videos for Pexels) with other components across the favorites and homepage. [Pexels 3 Components](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/pexels.js#L42-L68) [Unsplash 3 Components](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/unsplash.js#L122-L168)
 
   - **1 or more components should take text-based user input**
-- Our photos and videos pages leverage the Unsplash and Pexels API to fetch results based on text-based user input
-  *[Unsplash Photos text-based user input](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/unsplash.js#L155-L161)
-  *[Pexels Video text-based user input](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/pexels.js#L46-L51)
+- Our photos and videos pages leverage the Unsplash and Pexels API to fetch results based on text-based user input [Unsplash Photos text-based user input](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/unsplash.js#L155-L161) [Pexels Video text-based user input](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/pexels.js#L46-L51)
   
 
 
