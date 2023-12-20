@@ -1,0 +1,26 @@
+/* TeamMemberDetail.css */
+
+/* Define keyframes for color animation */
+@keyframes colorChange {
+  0% { color: black; } /* Start color */
+  50% { color: lightgray; } /* Midway color */
+  100% { color: black; } /* End color */
+}
+
+/* Apply animation to h2 */
+h1 {
+  animation: colorChange 3s ease infinite; /* Use the colorChange animation infinitely */
+}
+img{
+  height: 500px;
+  width: 500px;
+  border-radius: 500px;
+  object-position: center;
+  object-fit: cover;
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
