@@ -10,7 +10,7 @@ This project aims to provide users with a seamless experience in searching for, 
 ### Front End Requirements
 - UI (React)
   - **Create a topbar or sidebar component that is present throughout the app** - A navbar is present throughout the website allowing users to traverse through the pages easily
-    #[TopBar Component](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/navbar.js#L1-L17)
+    ##[TopBar Component](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/navbar.js#L1-L17)
     
   - **Create 3 or more additional components** - Each page has at least 3 additional components (an input field for search queries, a button for triggering searches, and a container for displaying results (images for Unsplash and videos for Pexels) with other components across the favorites and homepage.
     *[Pexels 3 Components](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/pexels.js#L42-L68)
