@@ -30,7 +30,7 @@ Our editFavorites page loads data from the backend as well as our favorites page
 
 
 
-    - **Clicking on one of these components should show additional information related to that instance** - Our captions (additional information) display when we navigate to the (instance) favorites page
+- **Clicking on one of these components should show additional information related to that instance** - Our captions (additional information) display when we navigate to the (instance) favorites page
   - **1 or more components should display data based on store state** - The Unsplash and Pexels pages fulfill this requirement through their image/video cards as these cards display data directly accessed from the Redux store state, which is updated based on user searches and API responses
 [Unsplash Component](https://github.com/Kazi27/moodboard-frontend/blob/eafadc4c00e6ccdeebe3cb692f6810503c74d1c8/src/unsplash.js#L122-L171)
 [Pexels Component](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/pexels.js#L42-L69)
