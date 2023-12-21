@@ -28,8 +28,6 @@ Our editFavorites page loads data from the backend as well as our favorites page
   - **1 or more components should display data based on store state** - The Unsplash and Pexels pages fulfill this requirement through their image/video cards as these cards display data directly accessed from the Redux store state, which is updated based on user searches and API responses
 [Unsplash Component](https://github.com/Kazi27/moodboard-frontend/blob/eafadc4c00e6ccdeebe3cb692f6810503c74d1c8/src/unsplash.js#L122-L171)
 [Pexels Component](https://github.com/Kazi27/moodboard-frontend/blob/13df48b0946380e91e9b694f7dd5a6a26ccdfe01/src/pexels.js#L42-L69)
-    - **Clicking on one of these components should show additional information related to that instance** - Our captions (additional information) display when we navigate to the (instance) favorites page
-
     
 
   - **Components should enable to user to perform CRUD operations on the backend models** - Components on the Unsplash page allow the user to add a new favorite photo with a caption when with a click on the heart icon, typing a caption then clicking submit (create), we are reading data from our database when we navigate to our favorites page (read), we are updating either photo_url and/or caption_text when we navigate to edit favorites page and click on the pencil icon to modify an existing favorite photo (update), we are deleting when we navigate to the edit favorites page and click on the trash icon on a particular favorite photo (delete) [Unsplash Component to Handle CRUD operations on the backend models](https://github.com/Kazi27/moodboard-frontend/blob/eafadc4c00e6ccdeebe3cb692f6810503c74d1c8/src/unsplash.js#L89-L119)
